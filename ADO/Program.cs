@@ -15,14 +15,23 @@ namespace ADO
 			
 			//string cmd = "SELECT * FROM Directors";
 			Connector connector = new Connector(connection_string);
-			string cmd = "SELECT movie_id, title, release_date, first_name, last_name FROM Movies, Directors WHERE director = director_id";
 
-			connector.Select(cmd);
-			Console.WriteLine($"Количество записей: {connector.Scalar("SELECT COUNT(*)FROM Movies")}");
+			connector.Insert("INSERT Directors (first_name, last_name) VALUES (N'Guy', N'Richi');");
+			Console.WriteLine($"Последний РК MAX:\t{connector.GetMaxPrimaryKey("Directors")}");
+			//string cmd = "SELECT movie_id, title, release_date, first_name, last_name FROM Movies, Directors WHERE director = director_id";
+
+			//connector.Select(cmd);
+			connector.Select("*", "Directors");
 			Console.WriteLine("──────────────────────────────────────────");
 			connector.Select("SELECT * FROM Directors");
 			Console.WriteLine($"Количество записей: {connector.Scalar("SELECT COUNT(*)FROM Directors")}");
 			Console.WriteLine("──────────────────────────────────────────");
+
+			connector.Select(
+				"title,release_date,first_name,last_name",
+				"Movies,Directors",
+				"director=director_id");
+			Console.WriteLine($"Количество записей: {connector.Scalar("SELECT COUNT(*)FROM Movies")}");
 
 			//command.CommandText = "SELECT COUNT(*) FROM Movies";
 			//Console.WriteLine($"Количество записей:\t{command.ExecuteScalar()}");
