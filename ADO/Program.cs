@@ -16,37 +16,42 @@ namespace ADO
 			for(int i = 0; i < connection_string.Length; i++)Console.Write("─");
 			Console.WriteLine();
 
-			//SqlConnection connection = new SqlConnection(connection_string);
-			//connection.Open();
+			//---//
+			SqlConnection connection = new SqlConnection(connection_string);
+			connection.Open();
+			//---//
 
+			//string cmd = "SELECT * FROM Directors";
+			//---//
 			string cmd = "SELECT movie_id, title, release_date, first_name, last_name FROM Movies, Directors WHERE director = director_id";
-			//SqlCommand command = new SqlCommand(cmd, connection);
+			SqlCommand command = new SqlCommand(cmd, connection);
 
-			//SqlDataReader reader = command.ExecuteReader();
-			//for(int i=0; i < reader.FieldCount; i++)
-			//{
-			//	Console.Write(reader.GetName(i)+"\t");
-			//}
-			//Console.WriteLine();
-			//Console.WriteLine("──────────────────────────────────────────");
-			//while (reader.Read())
-			//{
+			SqlDataReader reader = command.ExecuteReader();
+			for (int i = 0; i < reader.FieldCount; i++)
+			{
+				Console.Write(reader.GetName(i) + "\t");
+			}
+			Console.WriteLine();
+			Console.WriteLine("──────────────────────────────────────────");
+			while (reader.Read())
+			{
 
-			//	//Console.WriteLine($"{reader[0]}\t{reader[1]}\t{reader[2]}\t{reader[3]}");
-			//	for(int i = 0; i < reader.FieldCount; i++)
-			//		Console.Write($"{reader[i]}\t\t");
-			//	Console.WriteLine();
-			//}
-			//Console.WriteLine("──────────────────────────────────────────");
-			//reader.Close();
+				//Console.WriteLine($"{reader[0]}\t{reader[1]}\t{reader[2]}\t{reader[3]}");
+				for (int i = 0; i < reader.FieldCount; i++)
+					Console.Write($"{reader[i]}\t\t");
+				Console.WriteLine();
+			}
+			Console.WriteLine("──────────────────────────────────────────");
+			reader.Close();
 
-			//command.CommandText = "SELECT COUNT(*) FROM Movies";
-			//Console.WriteLine($"Количество записей:\t{command.ExecuteScalar()}");
-			//connection.Close();
+			command.CommandText = "SELECT COUNT(*) FROM Movies";
+			Console.WriteLine($"Количество записей:\t{command.ExecuteScalar()}");
+			connection.Close();
+			//---//
 
 
-			PrintHW.table(connection_string, cmd);
-			PrintHW.scalarCount(connection_string, "Movies");
+			//PrintHW.table(connection_string, cmd);
+			//PrintHW.scalarCount(connection_string, "Movies");
 		}
 	}
 }

@@ -31,7 +31,7 @@ namespace ADO
 			reader3.Read();
 			for (int i = 0; i < reader3.FieldCount; i++)
 			{
-				Console.Write(reader3.GetName(i));
+				Console.Write(reader3.GetName(i).PadRight(50));
 				for (int j = 0; j < ((cont[i]) / 8 - (reader3.GetName(i).ToString().Length) / 8 + 2); j++) Console.Write("\t");
 			}
 			reader3.Close();
