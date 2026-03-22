@@ -33,6 +33,7 @@ namespace ADO
 				"director=director_id");
 			Console.WriteLine($"Количество записей: {connector.Scalar("SELECT COUNT(*)FROM Movies")}");
 
+
 			//command.CommandText = "SELECT COUNT(*) FROM Movies";
 			//Console.WriteLine($"Количество записей:\t{command.ExecuteScalar()}");
 			//connection.Close();
