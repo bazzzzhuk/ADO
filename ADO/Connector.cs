@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using System.Data.SqlClient;
 using System.Data;
+using System.Runtime.Remoting.Messaging;
 
 namespace ADO
 {
@@ -90,18 +91,27 @@ namespace ADO
 		{
 			return GetMaxPrimaryKey(table) + 1;
 		}
+		public bool CheckNotExists(string table, string values)
+		{
+			string[] inValues = values.Split(',', ' ');
+			string cmd = $"SELECT {GetFieldName(table)} FROM {table} ";
+			if (inValues.Length > 1) cmd += $" WHERE {GetFieldName(table, 1)} = N'{inValues[0]}'";
+			for (int i = 1; i < inValues.Length; i++)cmd += $" AND {GetFieldName(table, i + 1)} = N'{inValues[i]}'";
+			return (Scalar(cmd) == null ? false : true);
+		}
 		public void Insert(string table, string values = "")
 		{
+			if (CheckNotExists(table, values))
+			{
+				Console.WriteLine($"Такие данные ({values}) есть в таблице {table}!!!");
+				return; 
+			}
 			string fields = GetFieldName(table, 0);
 			string values_insert = Convert.ToString(GetNextPrimaryKey(table));
-			string[] inValues = values.Split(',',' ');
-			for (int i = 1; i < inValues.Length+1; i++) fields += "," + GetFieldName(table, i);
-			//fields = GetPrimaryKeyName(table) + "," + fields;
+			string[] inValues = values.Split(',', ' ');
+			for (int i = 1; i < inValues.Length + 1; i++) fields += "," + GetFieldName(table, i);
 			for (int i = 0; i < inValues.Length; i++) values_insert += $",N'{inValues[i]}'";
-			//values = GetNextPrimaryKey(table) + "," + values;
 			string cmd = $"INSERT {table} ({fields}) VALUES ({values_insert});";
-			Console.WriteLine(fields);
-			Console.WriteLine(values);
 			SqlCommand command = new SqlCommand(cmd, connection);
 			connection.Open();
 			try

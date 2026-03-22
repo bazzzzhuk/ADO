@@ -18,7 +18,13 @@ namespace ADO
 			//string cmd = "SELECT * FROM Directors";
 			Connector connector = new Connector(connection_string);
 
-			connector.Insert("Directors","Георгий,Данелия");
+			connector.Insert("Directors", "Steven,Spielberg");
+			connector.Insert("Movies", "AI,2001-06-21,17");
+			//connector.Insert("Directors", "Георгий,Данелия");
+			//object r = connector.Scalar("SELECT director_id FROM Directors WHERE first_name = N'Douglas' AND last_name = N'Liman'");
+			//Console.WriteLine(r);
+			//bool l=connector.CheckNotExists("Directors", "Георгий Данелия");
+			//Console.WriteLine(l);
 			string name_table = "Directors";
 			Console.WriteLine($"Последний РК MAX:\t{connector.GetMaxPrimaryKey(name_table)}");
 			Console.WriteLine($"Следующий РК:\t{connector.GetNextPrimaryKey(name_table)}");
