@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using System.Data.SqlClient;
+using System.Data;
 
 namespace ADO
 {
@@ -62,6 +63,18 @@ namespace ADO
 			connection.Close();
 			return result;
 		}
+		public string GetFieldName(string table, int field_num = 0)
+		{
+			string cmd = $"SELECT * FROM {table}";
+			SqlCommand command = new SqlCommand(cmd, connection);
+			connection.Open();
+			SqlDataReader reader = command.ExecuteReader();
+			string pk_name = reader.GetName(field_num);
+			reader.Close();
+			connection.Close();
+			return pk_name;
+		}
+
 		public int GetMaxPrimaryKey(string table)
 		{
 			string cmd = $"SELECT * FROM {table}";
@@ -75,10 +88,20 @@ namespace ADO
 		}
 		public int GetNextPrimaryKey(string table)
 		{
-			return GetMaxPrimaryKey(table)+1;
+			return GetMaxPrimaryKey(table) + 1;
 		}
-		public void Insert(string cmd)
+		public void Insert(string table, string values = "")
 		{
+			string fields = GetFieldName(table, 0);
+			string values_insert = Convert.ToString(GetNextPrimaryKey(table));
+			string[] inValues = values.Split(',',' ');
+			for (int i = 1; i < inValues.Length+1; i++) fields += "," + GetFieldName(table, i);
+			//fields = GetPrimaryKeyName(table) + "," + fields;
+			for (int i = 0; i < inValues.Length; i++) values_insert += $",N'{inValues[i]}'";
+			//values = GetNextPrimaryKey(table) + "," + values;
+			string cmd = $"INSERT {table} ({fields}) VALUES ({values_insert});";
+			Console.WriteLine(fields);
+			Console.WriteLine(values);
 			SqlCommand command = new SqlCommand(cmd, connection);
 			connection.Open();
 			try
@@ -89,7 +112,7 @@ namespace ADO
 			{
 				Console.WriteLine(ex.GetType());
 				Console.WriteLine(ex.Message);
-				if(ex.GetType()==typeof(SqlException) && ex.Message.Contains("_id"))
+				if (ex.GetType() == typeof(SqlException) && ex.Message.Contains("_id"))
 				{
 					Console.WriteLine("Good");
 				}
@@ -98,3 +121,4 @@ namespace ADO
 		}
 	}
 }
+
