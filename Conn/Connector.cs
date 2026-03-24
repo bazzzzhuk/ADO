@@ -8,11 +8,11 @@ using System.Data.SqlClient;
 
 namespace Conn
 {
-	internal class Connector
+	public class Connector
 	{
 
 		string connection_string;
-		SqlConnection connection;
+		public SqlConnection connection;
 
 		public Connector(string connection_string)
 		{
