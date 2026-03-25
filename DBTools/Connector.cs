@@ -16,7 +16,7 @@ namespace DBtools
 
 		public Connector(string connection_string)
 		{
-			Console.WriteLine(connection_string);
+			//Console.WriteLine(connection_string);
 			this.connection_string = connection_string;
 			connection = new SqlConnection(connection_string);
 		}
