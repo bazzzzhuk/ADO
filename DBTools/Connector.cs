@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Data;
 using System.Data.SqlClient;
 
 namespace DBtools
@@ -21,8 +21,9 @@ namespace DBtools
 			connection = new SqlConnection(connection_string);
 		}
 
-		public void Select(string cmd)
+		public DataTable Select(string cmd)
 		{
+			DataTable table = new DataTable();
 			connection.Open();
 			SqlCommand command = new SqlCommand(cmd, connection);
 
@@ -30,26 +31,31 @@ namespace DBtools
 			for (int i = 0; i < reader.FieldCount; i++)
 			{
 				Console.Write(reader.GetName(i) + "\t");
+				table.Columns.Add(reader.GetName(i));
 			}
 			Console.WriteLine();
-			Console.WriteLine("──────────────────────────────────────────");
 			while (reader.Read())
 			{
+				DataRow	row = table.NewRow();
 				//Console.WriteLine($"{reader[0]}\t{reader[1]}\t{reader[2]}\t{reader[3]}");
 				for (int i = 0; i < reader.FieldCount; i++)
+				{
+					row[i] = reader[i];
 					Console.Write($"{reader[i]}\t\t");
+				}
 				Console.WriteLine();
+				table.Rows.Add(row);
 			}
-			Console.WriteLine("──────────────────────────────────────────");
 			reader.Close();
 			connection.Close();
+			return table;
 		}
-		public void Select(string fields, string tables, string condition = "")
+		public DataTable Select(string fields, string tables, string condition = "")
 		{
 			string cmd = $"SELECT {fields} FROM {tables}";
 			if (condition != "") cmd += $" WHERE {condition}";
 			cmd += ";";
-			Select(cmd);
+			return Select(cmd);
 		}
 		public object Scalar(string cmd)
 		{
