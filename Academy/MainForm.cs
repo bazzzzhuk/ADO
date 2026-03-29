@@ -19,24 +19,32 @@ namespace Academy
 				(
 				"last_name,first_name,middle_name,group_name,direction_name",
 				"Students, Groups, Directions",
-				"[group]=group_id AND direction=direction_id"
+				"[group]=group_id AND direction=direction_id",
+				"last_name"
 				),
 			new Query
 				(
 				"*",
 				"Groups,Directions",
-				"direction=direction_id"
+				"direction=direction_id",
+				"direction_id"
 				),
 			new Query("*","Directions"),
 			new Query("*","Disciplines"),
-			new Query("*","Teachers")
+			new Query("*","Teachers"),
+			new Query("discipline_name,last_name",
+				"Teachers,TeachersDisciplinesRelation, Disciplines",
+				"teacher=teacher_id AND discipline=discipline_id",
+				"discipline_name"
+				)
 		};
-		string[] status_messges =
+		string[] status_messages =
 		{
 			"Количество студентов",
 			"Количество групп",
 			"Количество направлений",
 			"Количество дисциплин",
+			"Количество преподавателей",
 			"Количество преподавателей"
 		};
 		DataGridView[] tables;
@@ -45,7 +53,7 @@ namespace Academy
 		public MainForm()
 		{
 			InitializeComponent();
-			tables = new DataGridView[] { dgvStudents, dgvGroups, dgvDirections, dgvDisciplines, dgvTeachers };
+			tables = new DataGridView[] { dgvStudents, dgvGroups, dgvDirections, dgvDisciplines, dgvTeachers, dgvDisciplineTeachers };
 			connector = new DBtools.Connector(ConfigurationManager.ConnectionStrings["PV_521_Import"].ConnectionString);
 			//dgvDirections.DataSource = connector.Select("*", "Directions");
 			//toolStripStatusLabel.Text = $"Количество направлений обучения: {dgvDirections.Rows.Count - 1}";
@@ -57,7 +65,7 @@ namespace Academy
 		{
 			int i = tabControl.SelectedIndex;
 			tables[tabControl.SelectedIndex].DataSource = connector.Select(queries[i].ToString());
-			toolStripStatusLabel.Text = $"{status_messges[i]}: {tables[i].RowCount - 1}";
+			toolStripStatusLabel.Text = $"{status_messages[i]}: {tables[i].RowCount - 1}";
 		}
 	}
 }
