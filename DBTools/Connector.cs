@@ -57,10 +57,43 @@ namespace DBtools
 			cmd += ";";
 			return Select(cmd);
 		}
-		public Dictionary<string, int> GetDictionary(string table)
+
+		public int scalarCount(string cmd)
+		{
+			connection.Open();
+			SqlCommand command = new SqlCommand();
+			command.CommandText = $"SELECT COUNT(*) FROM " + cmd;
+			command.Connection = connection;
+			//Console.WriteLine();
+			//Console.WriteLine($"Количество записей:\t{command.ExecuteScalar()}");
+			int c = (int)command.ExecuteScalar();
+			connection.Close();
+			return c;		
+		}
+		public string scalarNameTab(string cmd, int i)
+		{
+			connection.Open();
+			SqlCommand command = new SqlCommand();
+			command.CommandText = $"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{cmd}' AND COLUMNS.ORDINAL_POSITION = {i}";
+			command.Connection = connection;
+			//Console.WriteLine();
+			//Console.WriteLine($"Количество записей:\t{command.ExecuteScalar()}");
+			string c = (String)command.ExecuteScalar();
+			connection.Close();
+			return c;		
+		}
+		public void Insert(string tables, string fields, string values)
+		{
+			connection.Open();
+			string cmd = $"INSERT {tables} ({fields}) VALUES ({values})";
+			SqlCommand command = new SqlCommand(cmd, connection);
+			connection.Close();
+		}
+		public Dictionary<string, int> GetDictionary(string table, string condition="")
 		{
 			Dictionary<string, int> dictionary = new Dictionary<string, int>();
 			string cmd = $"SELECT {table.Substring(0, table.Length - 1)}_name,{table.Substring(0, table.Length - 1)}_id FROM {table}";
+			if (condition != "") cmd += $" WHERE {condition}";
 			SqlCommand command = new SqlCommand(cmd, connection);
 			connection.Open();
 			SqlDataReader reader = command.ExecuteReader();
