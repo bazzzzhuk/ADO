@@ -63,6 +63,7 @@ namespace Academy
 			cbStudentsGroup.Items.AddRange(d_groups.Keys.ToArray());
 			cbGroupsDirection.Items.AddRange(d_directions.Keys.ToArray());
 			cbStudentsDirection.Items.AddRange(d_directions.Keys.ToArray());
+			//DataSet, SqlDataAdapter.
 		}
 
 		private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
@@ -134,8 +135,8 @@ namespace Academy
 			//toolStripStatusLabel.Text = tables[tabControl.SelectedIndex].Name.Substring(3, tables[tabControl.SelectedIndex].Name.Length - 3).ToString();
 			//toolStripStatusLabel.Text = count_tab.ToString();
 			//toolStripStatusLabel.Text = connector.scalarNameTab("Groups", 3);			
-			toolStripStatusLabel.Text = fields;
-			//toolStripStatusLabel.Text = values_tab.ToString();
+			//toolStripStatusLabel.Text = fields;
+			toolStripStatusLabel.Text = values_tab.ToString();
 
 		}
 	}
