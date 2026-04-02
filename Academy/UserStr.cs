@@ -15,10 +15,17 @@ namespace Academy
 	public partial class UserStr : UserControl
 	{
 		DBtools.Connector connector;
-		public UserStr(string s)
+		public UserStr(string column_name, string column_values="")
 		{
 			InitializeComponent();
-			label1.Text = s;			
+			//label1.Text = s;	
+			textBoxNameColumn.Text = column_name;
+			textBox1.Text = column_values;
+		}
+
+		private void textBoxNameColumn_TextChanged(object sender, EventArgs e)
+		{
+
 		}
 	}
 }

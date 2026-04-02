@@ -19,16 +19,19 @@ namespace Academy
 		public AddForm()
 		{
 			InitializeComponent();
-			labelTest.Location = new Point( 100, 100);
+			labelTest.Location = new Point(100, 100);
 			connector = new DBtools.Connector(ConfigurationManager.ConnectionStrings["PV_521_Import"].ConnectionString);
 			string name_tab = Ref_out.ref_add;
+			int count_id = Convert.ToInt32(connector.Scalar($"SELECT MAX({connector.scalarNameTab(name_tab, 1)}) FROM {name_tab}")) + 1;
 			this.Text += name_tab;
 			int count_tab = connector.scalarCount($"INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = \'{name_tab}\'");
 			for (int i = 1; i <= count_tab; i++)
 			{
-				UserStr str = new UserStr(connector.scalarNameTab(name_tab, i));
-			// = connector.scalarNameTab(name_tab, 1);
-			flp.Controls.Add( str );
+				string values_name = "";
+				if (i == 1) values_name = count_id.ToString();
+				UserStr str = new UserStr(connector.scalarNameTab(name_tab, i), values_name);
+				// = connector.scalarNameTab(name_tab, 1);
+				flp.Controls.Add(str);
 			}
 		}
 

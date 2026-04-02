@@ -44,14 +44,14 @@
 			// 
 			this.flp.Location = new System.Drawing.Point(12, 12);
 			this.flp.Name = "flp";
-			this.flp.Size = new System.Drawing.Size(776, 426);
+			this.flp.Size = new System.Drawing.Size(619, 426);
 			this.flp.TabIndex = 1;
 			// 
 			// AddForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.ClientSize = new System.Drawing.Size(643, 450);
 			this.Controls.Add(this.flp);
 			this.Controls.Add(this.labelTest);
 			this.Name = "AddForm";
