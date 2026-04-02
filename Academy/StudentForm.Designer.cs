@@ -51,7 +51,6 @@
 			this.labelGroup.Size = new System.Drawing.Size(65, 20);
 			this.labelGroup.TabIndex = 15;
 			this.labelGroup.Text = "Группа:";
-			this.labelGroup.Click += new System.EventHandler(this.labelGroup_Click);
 			// 
 			// StudentForm
 			// 
