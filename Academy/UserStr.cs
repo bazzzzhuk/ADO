@@ -7,15 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using DBtools;
 
 namespace Academy
 {
 	public partial class UserStr : UserControl
 	{
-		public UserStr()
+		DBtools.Connector connector;
+		public UserStr(string s)
 		{
 			InitializeComponent();
-			label1.Text = "Go";
+			label1.Text = s;			
 		}
 	}
 }

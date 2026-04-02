@@ -24,12 +24,12 @@ namespace Academy
 			string name_tab = Ref_out.ref_add;
 			this.Text += name_tab;
 			int count_tab = connector.scalarCount($"INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = \'{name_tab}\'");
-			//for (int i = 0; i < count_tab; i++)
-			//{
-				UserStr str = new UserStr();
+			for (int i = 1; i <= count_tab; i++)
+			{
+				UserStr str = new UserStr(connector.scalarNameTab(name_tab, i));
 			// = connector.scalarNameTab(name_tab, 1);
-			str.Show();
-			//}
+			flp.Controls.Add( str );
+			}
 		}
 
 	}
