@@ -136,7 +136,8 @@ namespace Academy
 			//toolStripStatusLabel.Text = count_tab.ToString();
 			//toolStripStatusLabel.Text = connector.scalarNameTab("Groups", 3);			
 			//toolStripStatusLabel.Text = fields;
-			toolStripStatusLabel.Text = values_tab.ToString();
+			//toolStripStatusLabel.Text = values_tab.ToString();
+			AddForm addForm = new AddForm();
 
 		}
 	}
