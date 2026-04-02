@@ -138,11 +138,9 @@ namespace Academy
 			//toolStripStatusLabel.Text = fields;
 			//toolStripStatusLabel.Text = values_tab.ToString();
 
-			string add_to_text = tables[tabControl.SelectedIndex].Name.Substring(3, tables[tabControl.SelectedIndex].Name.Length - 3).ToString();
-			string add2 = add_to_text;
 			Ref_out ref_Out = new Ref_out();
-			Ref_out.ref_add = add2;
-			;
+			Ref_out.ref_add = tables[tabControl.SelectedIndex].Name.Substring(3, tables[tabControl.SelectedIndex].Name.Length - 3).ToString();
+			
 			AddForm addForm = new AddForm();
 			addForm.ShowDialog();
 		}
