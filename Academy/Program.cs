@@ -16,7 +16,9 @@ namespace Academy
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new MainForm());
+			MainForm BaseForm = new MainForm();
+			Ref_out.RefForm = BaseForm;
+			Application.Run(BaseForm);
 		}
 	}
 }

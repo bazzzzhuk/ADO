@@ -28,19 +28,32 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.labelTest = new System.Windows.Forms.Label();
 			this.SuspendLayout();
+			// 
+			// labelTest
+			// 
+			this.labelTest.AutoSize = true;
+			this.labelTest.Location = new System.Drawing.Point(29, 33);
+			this.labelTest.Name = "labelTest";
+			this.labelTest.Size = new System.Drawing.Size(0, 13);
+			this.labelTest.TabIndex = 0;
 			// 
 			// AddForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.labelTest);
 			this.Name = "AddForm";
 			this.Text = "Добавление ";
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
 		#endregion
+
+		private System.Windows.Forms.Label labelTest;
 	}
 }
