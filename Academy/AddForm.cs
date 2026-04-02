@@ -19,13 +19,17 @@ namespace Academy
 		public AddForm()
 		{
 			InitializeComponent();
-			//labelTest.
+			labelTest.Location = new Point( 100, 100);
 			connector = new DBtools.Connector(ConfigurationManager.ConnectionStrings["PV_521_Import"].ConnectionString);
 			string name_tab = Ref_out.ref_add;
 			this.Text += name_tab;
-			MainForm F = new MainForm();
-			//int count_tab = connector.scalarCount($"INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = \'{name_tab}\'");
-			labelTest.Text = connector.scalarNameTab(name_tab, 1);
+			int count_tab = connector.scalarCount($"INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = \'{name_tab}\'");
+			//for (int i = 0; i < count_tab; i++)
+			//{
+				UserStr str = new UserStr();
+			// = connector.scalarNameTab(name_tab, 1);
+			str.Show();
+			//}
 		}
 
 	}
