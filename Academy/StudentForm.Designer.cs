@@ -28,19 +28,9 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.ComboBox cbGroup;
 			this.labelGroup = new System.Windows.Forms.Label();
-			cbGroup = new System.Windows.Forms.ComboBox();
+			this.cbGroup = new System.Windows.Forms.ComboBox();
 			this.SuspendLayout();
-			// 
-			// cbGroup
-			// 
-			cbGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			cbGroup.FormattingEnabled = true;
-			cbGroup.Location = new System.Drawing.Point(158, 188);
-			cbGroup.Name = "cbGroup";
-			cbGroup.Size = new System.Drawing.Size(251, 24);
-			cbGroup.TabIndex = 14;
 			// 
 			// labelGroup
 			// 
@@ -52,17 +42,25 @@
 			this.labelGroup.TabIndex = 15;
 			this.labelGroup.Text = "Группа:";
 			// 
+			// cbGroup
+			// 
+			this.cbGroup.FormattingEnabled = true;
+			this.cbGroup.Location = new System.Drawing.Point(158, 190);
+			this.cbGroup.Name = "cbGroup";
+			this.cbGroup.Size = new System.Drawing.Size(251, 21);
+			this.cbGroup.TabIndex = 16;
+			// 
 			// StudentForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(564, 254);
+			this.Controls.Add(this.cbGroup);
 			this.Controls.Add(this.labelGroup);
-			this.Controls.Add(cbGroup);
 			this.Name = "StudentForm";
 			this.Text = "StudentForm";
-			this.Controls.SetChildIndex(cbGroup, 0);
 			this.Controls.SetChildIndex(this.labelGroup, 0);
+			this.Controls.SetChildIndex(this.cbGroup, 0);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -71,5 +69,6 @@
 		#endregion
 
 		private System.Windows.Forms.Label labelGroup;
+		private System.Windows.Forms.ComboBox cbGroup;
 	}
 }
