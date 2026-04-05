@@ -52,6 +52,7 @@ namespace Academy
 				if (sc_name_tab == "photo")
 				{
 					UPhoto = new UserPhoto(column_rename[connector.scalarNameTab(name_tab, i)]);
+					UPhoto.Name = $"UPhoto{i}";
 					flp.Controls.Add(UPhoto);
 				}
 				else if (sc_name_tab == "birth_date")
@@ -62,6 +63,7 @@ namespace Academy
 				else
 				{
 					UFlp_row = new UserStr(column_rename[connector.scalarNameTab(name_tab, i)], values_name);
+					UFlp_row.Name = $"UFlp_row{i}";
 					flp.Controls.Add(UFlp_row);
 				}
 			}
@@ -73,7 +75,10 @@ namespace Academy
 			//print_dict("stud_id");
 			//string s = connector.scalarNameTab(name_tab, 0);
 			//MessageBox.Show(connector.rename_column(connector.scalarNameTab(name_tab, 1)));
-			//MessageBox.Show(flp.);
+			//MessageBox.Show(flp.Controls[0].Name.ToString());
+
+			//Controls. = flp.Controls[0].Controls.
+			MessageBox.Show(flp.Controls[7].Name.ToString());
 		}
 		public void print_dict(string str/*Dictionary<string, string> ss*/)
 		{

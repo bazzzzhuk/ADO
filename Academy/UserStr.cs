@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using DBtools;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Academy
 {
@@ -21,6 +22,11 @@ namespace Academy
 			//label1.Text = s;	
 			textBoxNameColumn.Text = column_name;
 			textBox1.Text = column_values;
+			
+		}
+		public string column_name
+		{
+			get { return textBoxNameColumn.Text; }
 		}
 
 		private void textBoxNameColumn_TextChanged(object sender, EventArgs e)
