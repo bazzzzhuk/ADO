@@ -43,14 +43,16 @@
 			// 
 			// flp
 			// 
+			this.flp.AllowDrop = true;
+			this.flp.AutoScroll = true;
 			this.flp.Location = new System.Drawing.Point(12, 12);
 			this.flp.Name = "flp";
-			this.flp.Size = new System.Drawing.Size(619, 380);
+			this.flp.Size = new System.Drawing.Size(619, 516);
 			this.flp.TabIndex = 1;
 			// 
 			// buttonOK
 			// 
-			this.buttonOK.Location = new System.Drawing.Point(556, 415);
+			this.buttonOK.Location = new System.Drawing.Point(556, 534);
 			this.buttonOK.Name = "buttonOK";
 			this.buttonOK.Size = new System.Drawing.Size(75, 23);
 			this.buttonOK.TabIndex = 2;
@@ -62,7 +64,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(643, 450);
+			this.ClientSize = new System.Drawing.Size(643, 569);
 			this.Controls.Add(this.buttonOK);
 			this.Controls.Add(this.flp);
 			this.Controls.Add(this.labelTest);
