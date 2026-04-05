@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 
+
+
 namespace DBtools
 {
 	public class Connector
@@ -14,7 +16,20 @@ namespace DBtools
 		string connection_string;
 		SqlConnection connection;
 
-		public Connector(string connection_string)
+		Dictionary<string, string> column_rename = new Dictionary<string, string>
+			{
+				["stud_id"] = "Инд.номер",
+				["first_name"] = "Имя",
+				["last_name"] = "Фамилия",
+				["middle_name"] = "Отчество",
+				["birth_date"] = "Дата Рождения",
+				["photo"] = "Фото",
+				["email"] = "Эл.почта",
+				["phone"] = "Телефон",
+				["group"] = "Группа"
+			};
+
+	public Connector(string connection_string)
 		{
 			//Console.WriteLine(connection_string);
 			this.connection_string = connection_string;
@@ -81,6 +96,15 @@ namespace DBtools
 			string c = (String)command.ExecuteScalar();
 			connection.Close();
 			return c;		
+		}
+
+		public string rename_column()
+		{
+			//if(column_rename.ContainsKey(str))
+			//	return column_rename[str];
+			//else return str;
+			string s = this.ToString();
+			return column_rename[s];
 		}
 		public void Insert(string tables, string fields, string values)
 		{

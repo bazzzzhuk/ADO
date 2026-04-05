@@ -42,6 +42,8 @@ namespace Academy
 			"Количество дисциплин",
 			"Количество преподавателей"
 		};
+
+
 		DataGridView[] tables;
 
 		DBtools.Connector connector;

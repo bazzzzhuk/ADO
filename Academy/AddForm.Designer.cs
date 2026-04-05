@@ -30,6 +30,7 @@
 		{
 			this.labelTest = new System.Windows.Forms.Label();
 			this.flp = new System.Windows.Forms.FlowLayoutPanel();
+			this.buttonOK = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// labelTest
@@ -44,14 +45,25 @@
 			// 
 			this.flp.Location = new System.Drawing.Point(12, 12);
 			this.flp.Name = "flp";
-			this.flp.Size = new System.Drawing.Size(619, 426);
+			this.flp.Size = new System.Drawing.Size(619, 380);
 			this.flp.TabIndex = 1;
+			// 
+			// buttonOK
+			// 
+			this.buttonOK.Location = new System.Drawing.Point(556, 415);
+			this.buttonOK.Name = "buttonOK";
+			this.buttonOK.Size = new System.Drawing.Size(75, 23);
+			this.buttonOK.TabIndex = 2;
+			this.buttonOK.Text = "OK";
+			this.buttonOK.UseVisualStyleBackColor = true;
+			this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
 			// 
 			// AddForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(643, 450);
+			this.Controls.Add(this.buttonOK);
 			this.Controls.Add(this.flp);
 			this.Controls.Add(this.labelTest);
 			this.Name = "AddForm";
@@ -65,5 +77,6 @@
 
 		private System.Windows.Forms.Label labelTest;
 		private System.Windows.Forms.FlowLayoutPanel flp;
+		private System.Windows.Forms.Button buttonOK;
 	}
 }
