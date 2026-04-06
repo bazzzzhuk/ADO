@@ -62,7 +62,7 @@ namespace Academy
 				}
 				else
 				{
-					UFlp_row = new UserStr(column_rename[connector.scalarNameTab(name_tab, i)], values_name);
+					UFlp_row = new UserStr(connector.rename_column(connector.scalarNameTab(name_tab, i)), values_name);
 					UFlp_row.Name = $"UFlp_row{i}";
 					flp.Controls.Add(UFlp_row);
 				}
