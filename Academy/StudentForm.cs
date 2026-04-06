@@ -20,6 +20,14 @@ namespace Academy
 			this.cbGroup.DataSource = groups;
 			cbGroup.DisplayMember = "group_name";
 			cbGroup.ValueMember = "group_id";
+
+			tbLastName.Text = "Фамилия";
+			tbFirstName.Text = "Имя";
+			tbMiddleName.Text = "Отчество";
+			dtp_BirthDate.Value = Convert.ToDateTime("2000-01-02");
+			tbEmail.Text = "masha@dasha.ru";
+			tbPhone.Text = "+7(911)123-45-67";
+
 		}
 		protected override void buttonOK_Click(object sender, EventArgs e)
 		{

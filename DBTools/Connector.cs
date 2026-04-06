@@ -132,8 +132,8 @@ AND CONSTRAINT_NAME LIKE N'PK_%'";
 			string condition = "";
 			string[] s_fields = fields.Split(',');
 			string[] s_values = values.Split(',');
-			string parsed_values = $"N'{s_values[0]}',";
-			for (int i = 1; i < s_fields.Length; i++)
+			string parsed_values = "";//$"N'{s_values[0]}',";
+			for (int i = s_fields[0].Contains("_id") ? 1 : 0; i < s_fields.Length; i++)
 			{
 				condition += $" {s_fields[i]}=N'{s_values[i]}' ";
 				if (s_values[i].Length>1)
