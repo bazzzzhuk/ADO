@@ -78,7 +78,7 @@ namespace Academy
 			//MessageBox.Show(flp.Controls[0].Name.ToString());
 
 			//Controls. = flp.Controls[0].Controls.
-			MessageBox.Show(flp.Controls[7].Name.ToString());
+			MessageBox.Show($"{flp.Controls[5].Controls[1].Name.ToString()}:{flp.Controls[5].Controls[1].Text.ToString()}");
 		}
 		public void print_dict(string str/*Dictionary<string, string> ss*/)
 		{
