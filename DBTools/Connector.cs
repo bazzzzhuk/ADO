@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.
 
 
 
@@ -98,7 +99,7 @@ namespace DBtools
 			return c;		
 		}
 
-		public string rename_column()
+		public string rename_column(str)
 		{
 			//if(column_rename.ContainsKey(str))
 			//	return column_rename[str];
