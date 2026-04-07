@@ -55,6 +55,7 @@ namespace Academy
 			UserStr UFlp_row;
 			UserPhoto UPhoto;
 			UserBirthDate UB_date;
+			UserList UList;
 
 			InitializeComponent();
 
@@ -80,6 +81,11 @@ namespace Academy
 				{
 					UB_date = new UserBirthDate(connector.rename_column(sc_name_tab));
 					flp.Controls.Add(UB_date);
+				}
+				else if (sc_name_tab == "group_name" || sc_name_tab == "group")
+				{
+					UList = new UserList(connector.rename_column(sc_name_tab), "Directions");
+					flp.Controls.Add(UList);
 				}
 				else
 				{

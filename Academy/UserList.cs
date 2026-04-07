@@ -17,7 +17,7 @@ namespace Academy
 		{
 			InitializeComponent();
 			textBoxNameColumn.Text = column_name;
-			DataTable table_data = connector.Select($"SELECT * FROM {table}");
+			DataTable table_data = DataBase.Connector.Select($"SELECT * FROM {table}");
 			//cbGroup.DataSource = groups;
 			cb.DataSource = table_data;
 		}
