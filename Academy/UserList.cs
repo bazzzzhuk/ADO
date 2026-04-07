@@ -20,6 +20,8 @@ namespace Academy
 			DataTable table_data = DataBase.Connector.Select($"SELECT * FROM {table}");
 			//cbGroup.DataSource = groups;
 			cb.DataSource = table_data;
+			cb.DisplayMember = "group_name";
+			cb.ValueMember = "group_id";
 		}
 	}
 }
