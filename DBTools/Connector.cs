@@ -18,19 +18,35 @@ namespace DBtools
 		SqlConnection connection;
 
 		Dictionary<string, string> column_rename = new Dictionary<string, string>
-			{
-				["stud_id"] = "Инд.номер",
-				["first_name"] = "Имя",
-				["last_name"] = "Фамилия",
-				["middle_name"] = "Отчество",
-				["birth_date"] = "Дата Рождения",
-				["photo"] = "Фото",
-				["email"] = "Эл.почта",
-				["phone"] = "Телефон",
-				["group"] = "Группа"
-			};
+		{
+			["stud_id"] = "Инд.номер",
+			["last_name"] = "Фамилия",
+			["first_name"] = "Имя",
+			["middle_name"] = "Отчество",
+			["birth_date"] = "Дата Рождения",
+			["email"] = "Эл.почта",
+			["phone"] = "Телефон",
+			["photo"] = "Фото",
+			["group"] = "Группа",
+			["group_name"] = "Наименование группы",
+			["group_id"] = "ID группы",
+			["direction"] = "Направление учёбы",
+			["direction_id"] = "ID Направления",
+			["direction_name"] = "Ниаменование Направления учёбы",
+			["weekdays"] = "Схема обучения недели (Битно)",
+			["discipline"] = "Дисциплина, номер",
+			["discipline_id"] = "Дисциплина, ID",
+			["discipline_name"] = "Наименование Дисциплины",
+			["number_of_lessons"] = "Количество занятий",
+			["teacher"] = "Номер преподавателя",
+			["teacher_id"] = "ID преподавателя",
+			["work_since"] = "Опыт с",
+			["rate"] = "Рейтинг",
+			["start_time"] = "Начало занятий в",
+			["start_date"] = "Дата начала занятий"
+		};
 
-	public Connector(string connection_string)
+		public Connector(string connection_string)
 		{
 			//Console.WriteLine(connection_string);
 			this.connection_string = connection_string;

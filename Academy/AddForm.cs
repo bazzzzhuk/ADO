@@ -27,14 +27,31 @@ namespace Academy
 			["email"] = "Эл.почта",
 			["phone"] = "Телефон",
 			["photo"] = "Фото",
-			["group"] = "Группа"
+			["group"] = "Группа",
+
+			["group_name"] = "Наименование группы",
+			["group_id"] = "ID группы",
+			["direction"] = "Направление учёбы",
+			["direction_id"] = "ID Направления",
+			["direction_name"] = "Ниаменование Направления учёбы",
+			["weekdays"] = "Схема обучения недели (Битно)",
+			["discipline"] = "Дисциплина, номер",
+			["discipline_id"] = "Дисциплина, ID",
+			["discipline_name"] = "Наименование Дисциплины",
+			["number_of_lessons"] = "Количество занятий",
+			["teacher"] = "Номер преподавателя",
+			["teacher_id"] = "ID преподавателя",
+			["work_since"] = "Опыт с ",
+			["rate"] = "Рейтинг",
+			["start_time"] = "Начало заняти в",
+			["start_date"] = "Дата начала занятий"
 		};
 		DBtools.Connector connector;
 		public AddForm()
 		{
-			UserStr UFlp_row;
-			UserPhoto UPhoto;
-			UserBirthDate UB_date;
+			UserStr			UFlp_row;
+			UserPhoto		UPhoto;
+			UserBirthDate	UB_date;
 
 			InitializeComponent();
 			//labelTest.Location = new Point(100, 100);
@@ -51,19 +68,19 @@ namespace Academy
 				if (i == 1) values_name = count_id.ToString();
 				if (sc_name_tab == "photo")
 				{
-					UPhoto = new UserPhoto(column_rename[connector.scalarNameTab(name_tab, i)]);
-					UPhoto.Name = $"UPhoto{i}";
+					UPhoto = new UserPhoto(connector.rename_column(sc_name_tab));
+					UPhoto.Name = sc_name_tab;
 					flp.Controls.Add(UPhoto);
 				}
-				else if (sc_name_tab == "birth_date")
+				else if (sc_name_tab == "birth_date" || sc_name_tab == "work_since" || sc_name_tab == "start_date")
 				{
-					UB_date = new UserBirthDate(column_rename[connector.scalarNameTab(name_tab, i)]);
+					UB_date = new UserBirthDate(connector.rename_column(sc_name_tab));
 					flp.Controls.Add(UB_date);
 				}
 				else
 				{
-					UFlp_row = new UserStr(connector.rename_column(connector.scalarNameTab(name_tab, i)), values_name);
-					UFlp_row.Name = $"UFlp_row{i}";
+					UFlp_row = new UserStr(connector.rename_column(sc_name_tab), values_name);
+					UFlp_row.Name = sc_name_tab;
 					flp.Controls.Add(UFlp_row);
 				}
 			}
@@ -78,7 +95,8 @@ namespace Academy
 			//MessageBox.Show(flp.Controls[0].Name.ToString());
 
 			//Controls. = flp.Controls[0].Controls.
-			MessageBox.Show($"{flp.Controls[5].Controls[1].Name.ToString()}:{flp.Controls[5].Controls[1].Text.ToString()}");
+			//MessageBox.Show($"{flp.Controls[0].Controls[0].Name.ToString()}:{flp.Controls[0].Controls[0].Text.ToString()}");
+			MessageBox.Show($"{flp.Controls[0].Name.ToString()}:{flp.Controls[0].Controls[1].Text.ToString()}");
 		}
 		public void print_dict(string str/*Dictionary<string, string> ss*/)
 		{

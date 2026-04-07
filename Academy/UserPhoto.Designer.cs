@@ -37,21 +37,22 @@
 			// 
 			this.pictureBox.BackColor = System.Drawing.SystemColors.ControlDark;
 			this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.pictureBox.Location = new System.Drawing.Point(179, 13);
+			this.pictureBox.Location = new System.Drawing.Point(305, 13);
 			this.pictureBox.Name = "pictureBox";
 			this.pictureBox.Size = new System.Drawing.Size(150, 172);
 			this.pictureBox.TabIndex = 0;
 			this.pictureBox.TabStop = false;
+			this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
 			// 
 			// textBoxNameColumn
 			// 
 			this.textBoxNameColumn.BackColor = System.Drawing.SystemColors.Menu;
 			this.textBoxNameColumn.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.textBoxNameColumn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.textBoxNameColumn.Location = new System.Drawing.Point(3, 13);
+			this.textBoxNameColumn.Location = new System.Drawing.Point(5, 13);
 			this.textBoxNameColumn.Name = "textBoxNameColumn";
 			this.textBoxNameColumn.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-			this.textBoxNameColumn.Size = new System.Drawing.Size(165, 15);
+			this.textBoxNameColumn.Size = new System.Drawing.Size(290, 15);
 			this.textBoxNameColumn.TabIndex = 3;
 			this.textBoxNameColumn.TextChanged += new System.EventHandler(this.textBoxNameColumn_TextChanged);
 			// 
@@ -63,7 +64,7 @@
 			this.Controls.Add(this.textBoxNameColumn);
 			this.Controls.Add(this.pictureBox);
 			this.Name = "UserPhoto";
-			this.Size = new System.Drawing.Size(531, 201);
+			this.Size = new System.Drawing.Size(600, 200);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();

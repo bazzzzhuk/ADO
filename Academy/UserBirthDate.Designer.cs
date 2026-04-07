@@ -37,10 +37,10 @@
 			this.textBoxNameColumn.BackColor = System.Drawing.SystemColors.Menu;
 			this.textBoxNameColumn.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.textBoxNameColumn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.textBoxNameColumn.Location = new System.Drawing.Point(3, 7);
+			this.textBoxNameColumn.Location = new System.Drawing.Point(5, 7);
 			this.textBoxNameColumn.Name = "textBoxNameColumn";
 			this.textBoxNameColumn.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-			this.textBoxNameColumn.Size = new System.Drawing.Size(165, 15);
+			this.textBoxNameColumn.Size = new System.Drawing.Size(290, 15);
 			this.textBoxNameColumn.TabIndex = 3;
 			// 
 			// dtpBirthDate
@@ -48,9 +48,9 @@
 			this.dtpBirthDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.dtpBirthDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.dtpBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.dtpBirthDate.Location = new System.Drawing.Point(179, 3);
+			this.dtpBirthDate.Location = new System.Drawing.Point(305, 4);
 			this.dtpBirthDate.Name = "dtpBirthDate";
-			this.dtpBirthDate.Size = new System.Drawing.Size(349, 22);
+			this.dtpBirthDate.Size = new System.Drawing.Size(290, 22);
 			this.dtpBirthDate.TabIndex = 4;
 			// 
 			// UserBirthDate
@@ -61,7 +61,7 @@
 			this.Controls.Add(this.dtpBirthDate);
 			this.Controls.Add(this.textBoxNameColumn);
 			this.Name = "UserBirthDate";
-			this.Size = new System.Drawing.Size(535, 30);
+			this.Size = new System.Drawing.Size(600, 30);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

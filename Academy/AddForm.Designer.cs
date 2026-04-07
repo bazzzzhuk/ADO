@@ -47,12 +47,12 @@
 			this.flp.AutoScroll = true;
 			this.flp.Location = new System.Drawing.Point(12, 12);
 			this.flp.Name = "flp";
-			this.flp.Size = new System.Drawing.Size(619, 516);
+			this.flp.Size = new System.Drawing.Size(619, 568);
 			this.flp.TabIndex = 1;
 			// 
 			// buttonOK
 			// 
-			this.buttonOK.Location = new System.Drawing.Point(556, 534);
+			this.buttonOK.Location = new System.Drawing.Point(557, 586);
 			this.buttonOK.Name = "buttonOK";
 			this.buttonOK.Size = new System.Drawing.Size(75, 23);
 			this.buttonOK.TabIndex = 2;
@@ -62,12 +62,14 @@
 			// 
 			// AddForm
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(643, 569);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+			this.ClientSize = new System.Drawing.Size(644, 621);
 			this.Controls.Add(this.buttonOK);
 			this.Controls.Add(this.flp);
 			this.Controls.Add(this.labelTest);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.MaximizeBox = false;
+			this.MinimizeBox = false;
 			this.Name = "AddForm";
 			this.Text = "Добавление ";
 			this.ResumeLayout(false);
