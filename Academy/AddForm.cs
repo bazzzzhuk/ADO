@@ -99,8 +99,7 @@ namespace Academy
 		private void buttonOK_Click(object sender, EventArgs e)
 		{
 			//MessageBox.Show(count_id.ToString());
-			//MessageBox.Show();
-			//MessageBox.Show($"{flp.Controls[8].Name.ToString()}:{flp.Controls[0].Controls[1].Text.ToString()}");
+			MessageBox.Show($"{flp.Controls[8].Controls[0].Controls.GetChildIndex(sel).ToString()}");
 		}
 		public void print_dict(string str/*Dictionary<string, string> ss*/)
 		{
