@@ -17,6 +17,10 @@ namespace Academy
 {
 	public partial class AddForm : Form
 	{
+		DBtools.Connector connector;
+		string name_tab = Ref_out.ref_add;
+		int count_id;
+		int count_tab;
 		Dictionary<string, string> column_rename = new Dictionary<string, string>
 		{
 			["stud_id"] = "Инд.номер",
@@ -46,20 +50,18 @@ namespace Academy
 			["start_time"] = "Начало заняти в",
 			["start_date"] = "Дата начала занятий"
 		};
-		DBtools.Connector connector;
 		public AddForm()
 		{
-			UserStr			UFlp_row;
-			UserPhoto		UPhoto;
-			UserBirthDate	UB_date;
+			UserStr UFlp_row;
+			UserPhoto UPhoto;
+			UserBirthDate UB_date;
 
 			InitializeComponent();
-			//labelTest.Location = new Point(100, 100);
 			connector = new DBtools.Connector(ConfigurationManager.ConnectionStrings["PV_521_Import"].ConnectionString);
-			string name_tab = Ref_out.ref_add;
-			int count_id = Convert.ToInt32(connector.Scalar($"SELECT MAX({connector.scalarNameTab(name_tab, 1)}) FROM {name_tab}")) + 1;
+			//labelTest.Location = new Point(100, 100);
+			count_id = Convert.ToInt32(connector.Scalar($"SELECT MAX({connector.scalarNameTab(name_tab, 1)}) FROM {name_tab}")) + 1;
+			count_tab = connector.scalarCount($"INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = \'{name_tab}\'");
 			this.Text += name_tab;
-			int count_tab = connector.scalarCount($"INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = \'{name_tab}\'");
 			for (int i = 1; i <= count_tab; i++)
 			{
 				string sc_name_tab = "";
@@ -88,15 +90,8 @@ namespace Academy
 
 		private void buttonOK_Click(object sender, EventArgs e)
 		{
-			string name_tab = Ref_out.ref_add;
-			//print_dict("stud_id");
-			//string s = connector.scalarNameTab(name_tab, 0);
-			//MessageBox.Show(connector.rename_column(connector.scalarNameTab(name_tab, 1)));
-			//MessageBox.Show(flp.Controls[0].Name.ToString());
-
-			//Controls. = flp.Controls[0].Controls.
-			//MessageBox.Show($"{flp.Controls[0].Controls[0].Name.ToString()}:{flp.Controls[0].Controls[0].Text.ToString()}");
-			MessageBox.Show($"{flp.Controls[0].Name.ToString()}:{flp.Controls[0].Controls[1].Text.ToString()}");
+			MessageBox.Show(count_id.ToString());
+			//MessageBox.Show($"{flp.Controls[0].Name.ToString()}:{flp.Controls[0].Controls[1].Text.ToString()}");
 		}
 		public void print_dict(string str/*Dictionary<string, string> ss*/)
 		{

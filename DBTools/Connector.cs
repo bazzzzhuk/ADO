@@ -124,13 +124,6 @@ namespace DBtools
 			//string s = this.ToString();
 			return column_rename[name];
 		}
-		public void Insert(string tables, string fields, string values)
-		{
-			connection.Open();
-			string cmd = $"INSERT {tables} ({fields}) VALUES ({values})";
-			SqlCommand command = new SqlCommand(cmd, connection);
-			connection.Close();
-		}
 		public Dictionary<string, int> GetDictionary(string table, string condition="")
 		{
 			Dictionary<string, int> dictionary = new Dictionary<string, int>();
@@ -182,6 +175,32 @@ FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
 WHERE   TABLE_NAME = N'{table}'
 AND CONSTRAINT_NAME LIKE N'PK_%'";
 			return (string)Scalar(cmd);
+		}
+		public void Insert(string table, string fields, string values)
+		{
+			string condition = "";
+			string[] s_fields = fields.Split(',');
+			string[] s_values = values.Split(',');
+			string parsed_fields = "";
+			string parsed_values = "";//$"N'{s_values[0]}',";
+			for (int i = s_fields[0].Contains("_id") ? 1 : 0; i < s_fields.Length; i++)
+			{
+				if (s_values[i] == "") continue;
+				condition += $" {s_fields[i]}=N'{s_values[i]}' ";
+				parsed_fields += s_fields[i];
+				if (i != s_fields.Length - 1) parsed_fields += ",";
+				if (s_values[i].Length > 0)
+					parsed_values += s_values[i][0] != 'N' && s_values[i].Length > 1 && s_values[i][1] != '\'' ? $"N'{s_values[i]}'" : s_values[i];
+				if (i != s_fields.Length - 1)
+				{
+					condition += "AND";
+					parsed_values += ",";
+				}
+
+			}
+			string cmd = $"IF NOT EXISTS (SELECT {GetPrimaryKeyColumnName(table)} FROM {table} WHERE {condition})";
+			cmd += $"INSERT {table}({parsed_fields}) VALUES ({parsed_values})";
+			Insert(cmd);
 		}
 		public void Insert(string cmd)
 		{
