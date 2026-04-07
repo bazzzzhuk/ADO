@@ -84,7 +84,7 @@ namespace Academy
 				}
 				else if (sc_name_tab == "group_name" || sc_name_tab == "group")
 				{
-					UList = new UserList(connector.rename_column(sc_name_tab), "Directions");
+					UList = new UserList(connector.rename_column(sc_name_tab), sc_name_tab);
 					flp.Controls.Add(UList);
 				}
 				else
@@ -98,8 +98,9 @@ namespace Academy
 
 		private void buttonOK_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show(count_id.ToString());
-			//MessageBox.Show($"{flp.Controls[0].Name.ToString()}:{flp.Controls[0].Controls[1].Text.ToString()}");
+			//MessageBox.Show(count_id.ToString());
+			//MessageBox.Show();
+			//MessageBox.Show($"{flp.Controls[8].Name.ToString()}:{flp.Controls[0].Controls[1].Text.ToString()}");
 		}
 		public void print_dict(string str/*Dictionary<string, string> ss*/)
 		{
