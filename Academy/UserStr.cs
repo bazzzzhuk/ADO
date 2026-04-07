@@ -24,11 +24,6 @@ namespace Academy
 			textBox1.Text = column_values;
 			
 		}
-		public string column_name
-		{
-			get { return textBoxNameColumn.Text; }
-		}
-
 		private void textBoxNameColumn_TextChanged(object sender, EventArgs e)
 		{
 

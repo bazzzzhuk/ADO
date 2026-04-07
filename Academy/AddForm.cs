@@ -57,6 +57,8 @@ namespace Academy
 			UserBirthDate UB_date;
 
 			InitializeComponent();
+
+		
 			connector = new DBtools.Connector(ConfigurationManager.ConnectionStrings["PV_521_Import"].ConnectionString);
 			//labelTest.Location = new Point(100, 100);
 			count_id = Convert.ToInt32(connector.Scalar($"SELECT MAX({connector.scalarNameTab(name_tab, 1)}) FROM {name_tab}")) + 1;
