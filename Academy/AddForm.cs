@@ -67,30 +67,30 @@ namespace Academy
 			this.Text += name_tab;
 			for (int i = 1; i <= count_tab; i++)
 			{
-				string sc_name_tab = "";
-				sc_name_tab = connector.scalarNameTab(name_tab, i);
+				string sc_name_column = "";
+				sc_name_column = connector.scalarNameTab(name_tab, i);
 				string values_name = "";
 				if (i == 1) values_name = count_id.ToString();
-				if (sc_name_tab == "photo")
+				if (sc_name_column == "photo")
 				{
-					UPhoto = new UserPhoto(connector.rename_column(sc_name_tab));
-					UPhoto.Name = sc_name_tab;
+					UPhoto = new UserPhoto(connector.rename_column(sc_name_column));
+					UPhoto.Name = sc_name_column;
 					flp.Controls.Add(UPhoto);
 				}
-				else if (sc_name_tab == "birth_date" || sc_name_tab == "work_since" || sc_name_tab == "start_date")
+				else if (sc_name_column == "birth_date" || sc_name_column == "work_since" || sc_name_column == "start_date")
 				{
-					UB_date = new UserBirthDate(connector.rename_column(sc_name_tab));
+					UB_date = new UserBirthDate(connector.rename_column(sc_name_column));
 					flp.Controls.Add(UB_date);
 				}
-				else if (sc_name_tab == "group_name" || sc_name_tab == "group")
+				else if (sc_name_column == "group_name" || sc_name_column == "group" || sc_name_column == "discipline_name" || sc_name_column == "discipline"|| sc_name_column == "direction_name" || sc_name_column == "direction")
 				{
-					UList = new UserList(connector.rename_column(sc_name_tab), sc_name_tab);
+					UList = new UserList(connector.rename_column(sc_name_column), sc_name_column);
 					flp.Controls.Add(UList);
 				}
 				else
 				{
-					UFlp_row = new UserStr(connector.rename_column(sc_name_tab), values_name);
-					UFlp_row.Name = sc_name_tab;
+					UFlp_row = new UserStr(connector.rename_column(sc_name_column), values_name);
+					UFlp_row.Name = sc_name_column;
 					flp.Controls.Add(UFlp_row);
 				}
 			}
@@ -98,8 +98,10 @@ namespace Academy
 
 		private void buttonOK_Click(object sender, EventArgs e)
 		{
+			int ss = Convert.ToInt32((flp.Controls[8].Controls[0] as ComboBox).SelectedValue);
+
 			//MessageBox.Show(count_id.ToString());
-			MessageBox.Show($"{flp.Controls[8].Controls[0].Controls.GetChildIndex(sel).ToString()}");
+			MessageBox.Show(ss.ToString());
 		}
 		public void print_dict(string str/*Dictionary<string, string> ss*/)
 		{

@@ -37,7 +37,7 @@
 			this.textBoxNameColumn.BackColor = System.Drawing.SystemColors.Menu;
 			this.textBoxNameColumn.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.textBoxNameColumn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.textBoxNameColumn.Location = new System.Drawing.Point(5, 6);
+			this.textBoxNameColumn.Location = new System.Drawing.Point(5, 5);
 			this.textBoxNameColumn.Name = "textBoxNameColumn";
 			this.textBoxNameColumn.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
 			this.textBoxNameColumn.Size = new System.Drawing.Size(290, 15);
@@ -46,7 +46,7 @@
 			// cb
 			// 
 			this.cb.FormattingEnabled = true;
-			this.cb.Location = new System.Drawing.Point(305, 5);
+			this.cb.Location = new System.Drawing.Point(305, 3);
 			this.cb.Name = "cb";
 			this.cb.Size = new System.Drawing.Size(290, 21);
 			this.cb.TabIndex = 4;
@@ -55,6 +55,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.Controls.Add(this.cb);
 			this.Controls.Add(this.textBoxNameColumn);
 			this.Name = "UserList";

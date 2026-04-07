@@ -15,6 +15,7 @@ namespace Academy
 	{
 		public UserList(string column_name, string table)
 		{
+			if (table.Contains("_name")) table = table.Substring(0, table.Length - 5);
 			string able = table.Substring(1, table.Length-1) + "s";
 			string big_name_table = table.First().ToString().ToUpper()+able;
 			InitializeComponent();
