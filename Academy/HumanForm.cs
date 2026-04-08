@@ -14,15 +14,27 @@ namespace Academy
 {
 	public partial class HumanForm : Form
 	{
+		internal Models.Human human;
 		//protected DBtools.Connector connector;
 		protected HumanForm()
 		{
 			InitializeComponent();
 			//connector = new DBtools.Connector(ConfigurationManager.ConnectionStrings["PV_521_Import"].ConnectionString);
+
 		}
 
 		protected virtual void buttonOK_Click(object sender, EventArgs e)
-		{ 
+		{
+			human = new Models.Human
+				(
+				tbLastName.Text,
+				tbFirstName.Text,
+				tbMiddleName.Text,
+				dtp_BirthDate.Value.ToString("yyyy-MM-dd"),
+				tbEmail.Text,
+				tbPhone.Text,
+				pbPhoto.Image
+				);
 		}
 	}
 }
