@@ -26,9 +26,18 @@ namespace Academy
 			tbFirstName.Text = "Имя";
 			tbMiddleName.Text = "Отчество";
 			dtp_BirthDate.Value = Convert.ToDateTime("2000-01-02");
-			tbEmail.Text = "masha@dasha.ru";
+			tbEmail.Text = "mbILo@dasha.ru";
 			tbPhone.Text = "+7(911)123-45-67";
 
+		}
+		public StudentForm(int id):this()
+		{
+			DataTable data = DataBase.Connector.Select("*","Students",$"stud_id={id}");
+			//object[] arr = data.Rows[0].;
+			student = new Models.Student(data.Rows[0].ItemArray);
+			human = student;
+			Extract();
+			cbGroup.SelectedValue = student.group;
 		}
 		protected override void buttonOK_Click(object sender, EventArgs e)
 		{
