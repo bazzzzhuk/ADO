@@ -132,11 +132,12 @@
 			// 
 			this.pbPhoto.BackColor = System.Drawing.SystemColors.ControlDark;
 			this.pbPhoto.BackgroundImage = global::Academy.Properties.Resources.Shrek2_2_1024x768_1_;
-			this.pbPhoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.pbPhoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 			this.pbPhoto.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.pbPhoto.Location = new System.Drawing.Point(422, 13);
 			this.pbPhoto.Name = "pbPhoto";
 			this.pbPhoto.Size = new System.Drawing.Size(131, 168);
+			this.pbPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.pbPhoto.TabIndex = 8;
 			this.pbPhoto.TabStop = false;
 			// 
@@ -149,6 +150,7 @@
 			this.buttonBrowse.TabIndex = 9;
 			this.buttonBrowse.Text = "Найти фото";
 			this.buttonBrowse.UseVisualStyleBackColor = true;
+			this.buttonBrowse.Click += new System.EventHandler(this.buttonBrowse_Click);
 			// 
 			// tbEmail
 			// 
