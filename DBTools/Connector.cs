@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 
+
+
 namespace DBtools
 {
 	public class Connector
@@ -152,6 +154,22 @@ AND CONSTRAINT_NAME LIKE N'PK_%'";
 			string cmd = $"IF NOT EXISTS (SELECT {GetPrimaryKeyColumnName(table)} FROM {table} WHERE {condition})";
 			cmd += $"INSERT {table}({parsed_fields}) VALUES ({parsed_values})";
 			Insert(cmd);
+		}
+		public void Update(string cmd)
+		{
+			SqlCommand command = new SqlCommand(cmd, connection);
+			connection.Open();
+			command.ExecuteNonQuery();
+			connection.Close();
+		}
+		public void UploadPhoto(byte[] image, int id, string field, string table)
+		{
+			string cmd = $"UPDATE {table} SET {field}=@image WHERE {GetPrimaryKeyColumnName(table)}={id}";
+			SqlCommand command = new SqlCommand(cmd, connection);
+			command.Parameters.Add("@image", SqlDbType.VarBinary).Value = image;
+			connection.Open();
+			command.ExecuteNonQuery();
+			connection.Close();
 		}
 	}
 }

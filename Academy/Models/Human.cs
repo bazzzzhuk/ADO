@@ -6,19 +6,22 @@ using System.Text;
 using System.Threading.Tasks;
 
 using System.Drawing;
+using System.IO;
 
 namespace Academy.Models
 {
 	internal class Human
 	{
+		internal int id;
 		internal string last_name;
 		internal string first_name;
 		internal string middle_name;
 		internal string birth_date;
 		internal string email;
 		internal string phone;
-		Image photo;
+		internal Image photo;
 		public Human(
+			int id,
 			string last_name, 
 			string first_name, 
 			string middle_name, 
@@ -26,7 +29,8 @@ namespace Academy.Models
 			string email, 
 			string phone, 
 			Image photo)
-		{ 
+		{		
+			this.id = id;
 			this.last_name = last_name;
 			this.first_name = first_name;
 			this.middle_name = middle_name;
@@ -37,6 +41,7 @@ namespace Academy.Models
 		}
 		public Human(Human other) 
 		{
+			this.id = other.id;
 			this.last_name=other.last_name;
 			this.first_name=other.first_name;
 			this.middle_name=other.middle_name;
@@ -47,6 +52,7 @@ namespace Academy.Models
 		}
 		public Human(object[] values)
 		{
+			this.id = Convert.ToInt32(values[0]);
 			this.last_name = values[1].ToString();
 			this.first_name = values[2].ToString();
 			this.middle_name = values[3].ToString();
@@ -54,9 +60,20 @@ namespace Academy.Models
 			this.email = values[5].ToString();
 			this.phone = values[6].ToString();
 		}
+		public byte[] SerializePhoto()
+		{
+			if (photo == null) return null;
+			MemoryStream ms = new MemoryStream();
+			photo.Save(ms, photo.RawFormat);
+			return ms.ToArray();
+		}
 		public virtual string GetNames()
 		{ return $"last_name, first_name,middle_name,birth_date,email,phone"; }
 		public virtual string GetValues()
 		{ return $"{last_name},{first_name},{middle_name},{birth_date},{email},{phone}"; }
+		public virtual string GetCondition()
+		{
+			return $"last_name=N'{last_name}' AND first_name=N'{first_name}' AND middle_name=N'{middle_name}' AND birth_date=N'{birth_date}' AND email=N'{email}' AND phone=N'{phone}'"; 
+		}
 	}
 }

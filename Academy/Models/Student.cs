@@ -14,6 +14,7 @@ namespace Academy.Models
 		internal int group;
 		public Student
 			(
+			int id,
 			string last_name,
 			string first_name,
 			string middle_name,
@@ -23,6 +24,7 @@ namespace Academy.Models
 			Image photo,
 			int group)
 			: base(
+			id,
 			last_name,
 			first_name,
 			middle_name,
@@ -46,6 +48,14 @@ namespace Academy.Models
 		public override string GetValues()
 		{
 			return $"{base.GetValues()},{group}";
+		}
+		public override string GetCondition()
+		{
+			return base.GetCondition() + $" AND [group]={group}";
+		}
+		public string GetUpdateString()
+		{
+			return GetCondition().Replace(" AND ", ",");
 		}
 	}
 }
