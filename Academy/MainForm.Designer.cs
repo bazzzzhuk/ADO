@@ -45,6 +45,7 @@
 			this.dgvDisciplines = new System.Windows.Forms.DataGridView();
 			this.tabPageTeachers = new System.Windows.Forms.TabPage();
 			this.dgvTeachers = new System.Windows.Forms.DataGridView();
+			this.buttonAddTeacher = new System.Windows.Forms.Button();
 			this.statusStrip.SuspendLayout();
 			this.tabControl.SuspendLayout();
 			this.tabPageStudents.SuspendLayout();
@@ -234,6 +235,7 @@
 			// 
 			// tabPageTeachers
 			// 
+			this.tabPageTeachers.Controls.Add(this.buttonAddTeacher);
 			this.tabPageTeachers.Controls.Add(this.dgvTeachers);
 			this.tabPageTeachers.Location = new System.Drawing.Point(4, 22);
 			this.tabPageTeachers.Name = "tabPageTeachers";
@@ -250,10 +252,20 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.dgvTeachers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
 			this.dgvTeachers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dgvTeachers.Location = new System.Drawing.Point(9, 18);
+			this.dgvTeachers.Location = new System.Drawing.Point(9, 29);
 			this.dgvTeachers.Name = "dgvTeachers";
-			this.dgvTeachers.Size = new System.Drawing.Size(775, 367);
+			this.dgvTeachers.Size = new System.Drawing.Size(775, 356);
 			this.dgvTeachers.TabIndex = 1;
+			// 
+			// buttonAddTeacher
+			// 
+			this.buttonAddTeacher.Location = new System.Drawing.Point(709, 1);
+			this.buttonAddTeacher.Name = "buttonAddTeacher";
+			this.buttonAddTeacher.Size = new System.Drawing.Size(75, 23);
+			this.buttonAddTeacher.TabIndex = 2;
+			this.buttonAddTeacher.Text = "Добавить";
+			this.buttonAddTeacher.UseVisualStyleBackColor = true;
+			this.buttonAddTeacher.Click += new System.EventHandler(this.buttonAddTeacher_Click);
 			// 
 			// MainForm
 			// 
@@ -301,6 +313,7 @@
 		private System.Windows.Forms.ComboBox cbStudentsDirection;
 		private System.Windows.Forms.ComboBox cbStudentsGroup;
 		private System.Windows.Forms.Button buttonAddStudent;
+		private System.Windows.Forms.Button buttonAddTeacher;
 	}
 }
 
