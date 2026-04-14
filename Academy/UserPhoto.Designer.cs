@@ -30,6 +30,7 @@
 		{
 			this.pictureBox = new System.Windows.Forms.PictureBox();
 			this.textBoxNameColumn = new System.Windows.Forms.TextBox();
+			this.buttonBrowse = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -56,11 +57,27 @@
 			this.textBoxNameColumn.TabIndex = 3;
 			this.textBoxNameColumn.TextChanged += new System.EventHandler(this.textBoxNameColumn_TextChanged);
 			// 
+			// buttonBrowse
+			// 
+			this.buttonBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonBrowse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.buttonBrowse.Location = new System.Drawing.Point(178, 162);
+			this.buttonBrowse.Name = "buttonBrowse";
+			this.buttonBrowse.Size = new System.Drawing.Size(117, 23);
+			this.buttonBrowse.TabIndex = 4;
+			this.buttonBrowse.Text = "Выбрать фото";
+			this.buttonBrowse.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+			this.buttonBrowse.UseVisualStyleBackColor = true;
+			this.buttonBrowse.Click += new System.EventHandler(this.buttonBrowse_Click);
+			// 
 			// UserPhoto
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.Controls.Add(this.buttonBrowse);
 			this.Controls.Add(this.textBoxNameColumn);
 			this.Controls.Add(this.pictureBox);
 			this.Name = "UserPhoto";
@@ -75,5 +92,6 @@
 
 		private System.Windows.Forms.PictureBox pictureBox;
 		private System.Windows.Forms.TextBox textBoxNameColumn;
+		private System.Windows.Forms.Button buttonBrowse;
 	}
 }
