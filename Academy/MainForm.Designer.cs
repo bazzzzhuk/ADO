@@ -32,7 +32,6 @@
 			this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tabControl = new System.Windows.Forms.TabControl();
 			this.tabPageStudents = new System.Windows.Forms.TabPage();
-			this.button_add = new System.Windows.Forms.Button();
 			this.cbStudentsDirection = new System.Windows.Forms.ComboBox();
 			this.cbStudentsGroup = new System.Windows.Forms.ComboBox();
 			this.dgvStudents = new System.Windows.Forms.DataGridView();
@@ -45,6 +44,7 @@
 			this.dgvDisciplines = new System.Windows.Forms.DataGridView();
 			this.tabPageTeachers = new System.Windows.Forms.TabPage();
 			this.dgvTeachers = new System.Windows.Forms.DataGridView();
+			this.button_add = new System.Windows.Forms.Button();
 			this.statusStrip.SuspendLayout();
 			this.tabControl.SuspendLayout();
 			this.tabPageStudents.SuspendLayout();
@@ -102,16 +102,6 @@
 			this.tabPageStudents.TabIndex = 0;
 			this.tabPageStudents.Text = "Students";
 			this.tabPageStudents.UseVisualStyleBackColor = true;
-			// 
-			// button_add
-			// 
-			this.button_add.Location = new System.Drawing.Point(655, 427);
-			this.button_add.Name = "button_add";
-			this.button_add.Size = new System.Drawing.Size(75, 23);
-			this.button_add.TabIndex = 4;
-			this.button_add.Text = "Добавить";
-			this.button_add.UseVisualStyleBackColor = true;
-			this.button_add.Click += new System.EventHandler(this.button_Add_Click);
 			// 
 			// cbStudentsDirection
 			// 
@@ -246,6 +236,17 @@
 			this.dgvTeachers.Name = "dgvTeachers";
 			this.dgvTeachers.Size = new System.Drawing.Size(775, 367);
 			this.dgvTeachers.TabIndex = 1;
+			// 
+			// button_add
+			// 
+			this.button_add.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.button_add.Location = new System.Drawing.Point(655, 427);
+			this.button_add.Name = "button_add";
+			this.button_add.Size = new System.Drawing.Size(75, 23);
+			this.button_add.TabIndex = 4;
+			this.button_add.Text = "Добавить";
+			this.button_add.UseVisualStyleBackColor = true;
+			this.button_add.Click += new System.EventHandler(this.button_Add_Click);
 			// 
 			// MainForm
 			// 

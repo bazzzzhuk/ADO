@@ -119,6 +119,8 @@ namespace Academy
 			MessageBox.Show(columnes.ToString());
 			MessageBox.Show(columnes_val.ToString());
 			DataBase.Connector.Insert(name_tab, columnes, columnes_val);
+			//
+			//MainForm.tabControl_SelectedIndexChanged(tabControl, null);
 		}
 		public void print_dict(string str/*Dictionary<string, string> ss*/)
 		{
