@@ -106,7 +106,7 @@ namespace Academy
 			//columnes += flp.Controls[i].Name + " = " + (flp.Controls[i].Controls[2] as PictureBox).Image + "\n";
 			string columnes = "";
 			string columnes_val = string.Empty;
-			for (int i = 1; i < flp.Controls.Count; i++)
+			for (int i = 0; i < flp.Controls.Count; i++)
 			{
 				if (flp.Controls[i].Controls[flp.Controls[i].Name == "birth_date" ? 0 : 1].Text == string.Empty) continue;
 				//int io = (flp.Controls[i].Name == "birth_date" || flp.Controls[i].Name == "group") ? 0 : 1;
