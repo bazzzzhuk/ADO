@@ -145,6 +145,8 @@ namespace Academy
 			
 			AddForm addForm = new AddForm();
 			addForm.ShowDialog();
+			if (addForm.ShowDialog() == DialogResult.OK)
+				tabControl_SelectedIndexChanged(tabControl, null);
 		}
 		
 	}
