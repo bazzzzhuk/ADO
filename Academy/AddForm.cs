@@ -106,23 +106,24 @@ namespace Academy
 			//columnes += flp.Controls[i].Name + " = " + (flp.Controls[i].Controls[2] as PictureBox).Image + "\n";
 			string columnes = "";
 			string columnes_val = string.Empty;
-			for (int i = 0; i < flp.Controls.Count; i++)
+			for (int i = 1; i < flp.Controls.Count; i++)
 			{
 				if (flp.Controls[i].Controls[flp.Controls[i].Name == "birth_date" ? 0 : 1].Text == string.Empty) continue;
 				//int io = (flp.Controls[i].Name == "birth_date" || flp.Controls[i].Name == "group") ? 0 : 1;
 				if (flp.Controls[i].Name == "photo") continue;
 				if (flp.Controls[i].Name == "group") {columnes += "["+flp.Controls[i].Name + "]" + (i == flp.Controls.Count - 1 ? "" : ",");}
 				if (flp.Controls[i].Name != "group") columnes += flp.Controls[i].Name + (i == flp.Controls.Count - 1 ? "" : ",");
-				if (flp.Controls[i].Name == "group") {columnes_val += (flp.Controls[i].Controls[0] as ComboBox).SelectedValue + (i==flp.Controls.Count?",":""); continue; }
-				columnes_val += flp.Controls[i].Controls[flp.Controls[i].Name.ToString() == "birth_date"?0:1].Text + ",";
+				if (flp.Controls[i].Name == "group") {columnes_val += (flp.Controls[i].Controls[0] as ComboBox).SelectedValue + (i==flp.Controls.Count?", N'":""); continue; }
+				if (flp.Controls[i].Name == "birth_date") { columnes_val += "N'" + (flp.Controls[i].Controls[0] as DateTime).ToShortDateString() + "',"; continue; }
+				columnes_val += "N'" + flp.Controls[i].Controls[flp.Controls[i].Name.ToString() == "birth_date"?0:1].Text + "',";
 			}
 			MessageBox.Show(name_tab);
 			MessageBox.Show(columnes.ToString());
 			MessageBox.Show(columnes_val.ToString());
-			DataBase.Connector.Scalar
-							(
-							$"INSERT {name_tab}({columnes}) VALUES ({columnes_val});"
-							);
+			//DataBase.Connector.Scalar
+			//				(
+			//				$"INSERT {name_tab}({columnes}) VALUES ({columnes_val});SELECT SCOPE_IDENTITY()"
+			//				);
 			//DataBase.Connector.Insert(name_tab, columnes, columnes_val);
 			//
 			//MainForm.tabControl_SelectedIndexChanged(tabControl, null);
