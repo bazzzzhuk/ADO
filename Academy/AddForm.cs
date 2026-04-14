@@ -102,7 +102,7 @@ namespace Academy
 		{
 			//int ss = Convert.ToInt32((flp.Controls[8].Controls[0] as ComboBox).SelectedValue);
 			//MessageBox.Show(ss.ToString());
-			//--------------------------
+			//--------------------------SELECT SCOPE_IDENTITY()
 			//columnes += flp.Controls[i].Name + " = " + (flp.Controls[i].Controls[2] as PictureBox).Image + "\n";
 			string columnes = "";
 			string columnes_val = string.Empty;
@@ -113,13 +113,16 @@ namespace Academy
 				if (flp.Controls[i].Name == "photo") continue;
 				if (flp.Controls[i].Name == "group") {columnes += "["+flp.Controls[i].Name + "]" + (i == flp.Controls.Count - 1 ? "" : ",");}
 				if (flp.Controls[i].Name != "group") columnes += flp.Controls[i].Name + (i == flp.Controls.Count - 1 ? "" : ",");
-				if (flp.Controls[i].Name == "group") {columnes_val += (flp.Controls[i].Controls[0] as ComboBox).SelectedValue + (i==flp.Controls.Count?" AND ":""); continue; }
-				columnes_val += flp.Controls[i].Controls[flp.Controls[i].Name == "birth_date"?0:1].Text + " AND ";
+				if (flp.Controls[i].Name == "group") {columnes_val += (flp.Controls[i].Controls[0] as ComboBox).SelectedValue + (i==flp.Controls.Count?",":""); continue; }
+				columnes_val += flp.Controls[i].Controls[flp.Controls[i].Name == "birth_date"?0:1].Text + ",";
 			}
 			MessageBox.Show(name_tab);
 			MessageBox.Show(columnes.ToString());
 			MessageBox.Show(columnes_val.ToString());
-
+			DataBase.Connector.Scalar
+							(
+							$"INSERT {name_tab}({columnes}) VALUES ({columnes_val});"
+							);
 			//DataBase.Connector.Insert(name_tab, columnes, columnes_val);
 			//
 			//MainForm.tabControl_SelectedIndexChanged(tabControl, null);
