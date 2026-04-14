@@ -114,7 +114,7 @@ namespace Academy
 				if (flp.Controls[i].Name == "group") {columnes += "["+flp.Controls[i].Name + "]" + (i == flp.Controls.Count - 1 ? "" : ",");}
 				if (flp.Controls[i].Name != "group") columnes += flp.Controls[i].Name + (i == flp.Controls.Count - 1 ? "" : ",");
 				if (flp.Controls[i].Name == "group") {columnes_val += (flp.Controls[i].Controls[0] as ComboBox).SelectedValue + (i==flp.Controls.Count?",":""); continue; }
-				columnes_val += flp.Controls[i].Controls[flp.Controls[i].Name == "birth_date"?0:1].Text + ",";
+				columnes_val += flp.Controls[i].Controls[flp.Controls[i].Name.ToString() == "birth_date"?0:1].Text + ",";
 			}
 			MessageBox.Show(name_tab);
 			MessageBox.Show(columnes.ToString());
