@@ -97,7 +97,7 @@ namespace Academy
 			toolStripStatusLabel.Text = $"{status_messges[0]}:{dgvStudents.RowCount - 1}";
 		}
 
-		private void button1_Click(object sender, EventArgs e)
+		private void button_Add_Click(object sender, EventArgs e)
 		{
 			string name_tab = tables[tabControl.SelectedIndex].Name.Substring(3, tables[tabControl.SelectedIndex].Name.Length - 3).ToString();
 			int count_tab = connector.scalarCount($"INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = \'{name_tab}\'");

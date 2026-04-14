@@ -49,7 +49,6 @@
 			this.textBoxNameColumn.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
 			this.textBoxNameColumn.Size = new System.Drawing.Size(290, 15);
 			this.textBoxNameColumn.TabIndex = 2;
-			this.textBoxNameColumn.TextChanged += new System.EventHandler(this.textBoxNameColumn_TextChanged);
 			// 
 			// UserStr
 			// 

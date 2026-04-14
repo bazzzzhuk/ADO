@@ -46,7 +46,7 @@ namespace Academy
 			["teacher"] = "Номер преподавателя",
 			["teacher_id"] = "ID преподавателя",
 			["work_since"] = "Опыт с ",
-			["rate"] = "Рейтинг",
+			["rate"] = "Ставка",
 			["start_time"] = "Начало заняти в",
 			["start_date"] = "Дата начала занятий"
 		};
@@ -80,11 +80,13 @@ namespace Academy
 				else if (sc_name_column == "birth_date" || sc_name_column == "work_since" || sc_name_column == "start_date")
 				{
 					UB_date = new UserBirthDate(connector.rename_column(sc_name_column));
+					UB_date.Name = sc_name_column;
 					flp.Controls.Add(UB_date);
 				}
 				else if (sc_name_column == "group_name" || sc_name_column == "group" || sc_name_column == "discipline_name" || sc_name_column == "discipline"|| sc_name_column == "direction_name" || sc_name_column == "direction")
 				{
 					UList = new UserList(connector.rename_column(sc_name_column), sc_name_column);
+					UList.Name = sc_name_column;
 					flp.Controls.Add(UList);
 				}
 				else
@@ -98,10 +100,17 @@ namespace Academy
 
 		private void buttonOK_Click(object sender, EventArgs e)
 		{
-			int ss = Convert.ToInt32((flp.Controls[8].Controls[0] as ComboBox).SelectedValue);
-
-			//MessageBox.Show(count_id.ToString());
-			MessageBox.Show(ss.ToString());
+			//int ss = Convert.ToInt32((flp.Controls[8].Controls[0] as ComboBox).SelectedValue);
+			//MessageBox.Show(ss.ToString());
+			//--------------------------
+			string columnes = "";
+			string columnes_val = string.Empty;
+			for (int i = 0; i < flp.Controls.Count; i++)
+			{
+				int io = (flp.Controls[i].Name == "birth_date" || flp.Controls[i].Name == "group") ? 0 : 1;
+				columnes += flp.Controls[i].Name + " = " + flp.Controls[i].Controls[io].Text + "\n";
+			}
+			MessageBox.Show(columnes.ToString());
 		}
 		public void print_dict(string str/*Dictionary<string, string> ss*/)
 		{

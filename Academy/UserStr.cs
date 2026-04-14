@@ -24,9 +24,5 @@ namespace Academy
 			textBox1.Text = column_values;
 			
 		}
-		private void textBoxNameColumn_TextChanged(object sender, EventArgs e)
-		{
-
-		}
 	}
 }

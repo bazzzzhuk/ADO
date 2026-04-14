@@ -111,7 +111,7 @@
 			this.button_add.TabIndex = 4;
 			this.button_add.Text = "Добавить";
 			this.button_add.UseVisualStyleBackColor = true;
-			this.button_add.Click += new System.EventHandler(this.button1_Click);
+			this.button_add.Click += new System.EventHandler(this.button_Add_Click);
 			// 
 			// cbStudentsDirection
 			// 
