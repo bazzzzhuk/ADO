@@ -144,9 +144,10 @@ namespace Academy
 			Ref_out.ref_add = tables[tabControl.SelectedIndex].Name.Substring(3, tables[tabControl.SelectedIndex].Name.Length - 3).ToString();
 			
 			AddForm addForm = new AddForm();
-			addForm.ShowDialog();
-			//if (addForm.ShowDialog() == DialogResult.OK)
-			//	tabControl_SelectedIndexChanged(tabControl, null);
+			//addForm.ShowDialog();
+
+			if (addForm.ShowDialog() == DialogResult.OK)
+				tabControl_SelectedIndexChanged(tabControl, null);
 		}
 		
 	}

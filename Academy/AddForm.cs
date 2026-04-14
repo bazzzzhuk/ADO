@@ -59,7 +59,7 @@ namespace Academy
 
 			InitializeComponent();
 
-		
+
 			connector = new DBtools.Connector(ConfigurationManager.ConnectionStrings["PV_521_Import"].ConnectionString);
 			//labelTest.Location = new Point(100, 100);
 			count_id = Convert.ToInt32(connector.Scalar($"SELECT MAX({connector.scalarNameTab(name_tab, 1)}) FROM {name_tab}")) + 1;
@@ -83,7 +83,7 @@ namespace Academy
 					UB_date.Name = sc_name_column;
 					flp.Controls.Add(UB_date);
 				}
-				else if (sc_name_column == "group_name" || sc_name_column == "group" || sc_name_column == "discipline_name" || sc_name_column == "discipline"|| sc_name_column == "direction_name" || sc_name_column == "direction")
+				else if (sc_name_column == "group" || sc_name_column == "discipline_name" || sc_name_column == "discipline" || sc_name_column == "direction_name" || sc_name_column == "direction")
 				{
 					UList = new UserList(connector.rename_column(sc_name_column), sc_name_column);
 					UList.Name = sc_name_column;
@@ -105,42 +105,29 @@ namespace Academy
 			//--------------------------SELECT SCOPE_IDENTITY()
 			//columnes += flp.Controls[i].Name + " = " + (flp.Controls[i].Controls[2] as PictureBox).Image + "\n";
 			string columnes = "";
+			string dateB = "";
 			string columnes_val = string.Empty;
 			for (int i = 1; i < flp.Controls.Count; i++)
 			{
 				if (flp.Controls[i].Controls[flp.Controls[i].Name == "birth_date" ? 0 : 1].Text == string.Empty) continue;
 				//int io = (flp.Controls[i].Name == "birth_date" || flp.Controls[i].Name == "group") ? 0 : 1;
 				if (flp.Controls[i].Name == "photo") continue;
-				if (flp.Controls[i].Name == "group") {columnes += "["+flp.Controls[i].Name + "]" + (i == flp.Controls.Count - 1 ? "" : ",");}
+				if (flp.Controls[i].Name == "group") { columnes += "[" + flp.Controls[i].Name + "]" + (i == flp.Controls.Count - 1 ? "" : ","); }
 				if (flp.Controls[i].Name != "group") columnes += flp.Controls[i].Name + (i == flp.Controls.Count - 1 ? "" : ",");
-				if (flp.Controls[i].Name == "group") {columnes_val += (flp.Controls[i].Controls[0] as ComboBox).SelectedValue + (i==flp.Controls.Count?", N'":""); continue; }
-				if (flp.Controls[i].Name == "birth_date") { columnes_val += "N'" + (flp.Controls[i].Controls[0] as DateTime).ToShortDateString() + "',"; continue; }
-				columnes_val += "N'" + flp.Controls[i].Controls[flp.Controls[i].Name.ToString() == "birth_date"?0:1].Text + "',";
+				if (flp.Controls[i].Name == "group") { columnes_val += (flp.Controls[i].Controls[0] as ComboBox).SelectedValue + (i == flp.Controls.Count ? ", N'" : ""); continue; }
+				if (flp.Controls[i].Name == "birth_date"|| flp.Controls[i].Name == "start_date"|| flp.Controls[i].Name == "work_since") {columnes_val += "N'" + Convert.ToDateTime(flp.Controls[i].Controls[0].Text).ToString("yyyy-MM-dd") + "'" + (i == flp.Controls.Count - 1 ? "" : ","); continue;}
+				if (flp.Controls[i].Name == "direction") {columnes_val += (flp.Controls[i].Controls[0] as ComboBox).SelectedValue + ","; continue;}
+				columnes_val += "N'" + flp.Controls[i].Controls[flp.Controls[i].Name.ToString() == "birth_date" ? 0 : 1].Text + "'" + (i == flp.Controls.Count - 1 ? "" : ",");
 			}
 			MessageBox.Show(name_tab);
 			MessageBox.Show(columnes.ToString());
 			MessageBox.Show(columnes_val.ToString());
-			//DataBase.Connector.Scalar
-			//				(
-			//				$"INSERT {name_tab}({columnes}) VALUES ({columnes_val});SELECT SCOPE_IDENTITY()"
-			//				);
+			DataBase.Connector.Select
+							(
+							$"INSERT {name_tab}({columnes}) VALUES ({columnes_val});"
+							);
 			//DataBase.Connector.Insert(name_tab, columnes, columnes_val);
-			//
-			//MainForm.tabControl_SelectedIndexChanged(tabControl, null);
-		}
-		public void print_dict(string str/*Dictionary<string, string> ss*/)
-		{
-			//string str = "";
-			//str += $"{key} = {ss[key]}\n";
-			//MessageBox.Show(str);
-			//string name_tab = Ref_out.ref_add;
-			//int count_tab = connector.scalarCount($"INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = \'{name_tab}\'");
-
-			//for (int i = 1; i <= count_tab; i++)
-			//{
-			//	str += connector.scalarNameTab(name_tab, i) + "\n";
-			//}
-			//MessageBox.Show(connector.rename_column(str));
+			//mainForm.tabControl_SelectedIndexChanged(tabControl, null);
 		}
 	}
 }
