@@ -13,13 +13,13 @@
 		</Grid.RowDefinitions>
 		<TabControl Name="tabControl" Grid.Row="0" SelectionChanged="tabControl_SelectionChanged">
 			<TabItem Name="tabStudents"		Header="Students">		<DataGrid Name="dgvStudents" Height="310" VerticalAlignment="Bottom" />		</TabItem>
-			<TabItem Name="tabGroups"		Header="Groups">		<DataGrid Name="dgvGroups" />		</TabItem>
-			<TabItem Name="tabDirections"	Header="Directions">	<DataGrid Name="dgvDirections" />	</TabItem>
-			<TabItem Name="tabDisciplines"	Header="Disciplines">	<DataGrid Name="dgvDisciplines" />	</TabItem>
-			<TabItem Name="tabTeachers"		Header="Teachers">		<DataGrid Name="dgvTeachers" />		</TabItem>
+			<TabItem Name="tabGroups"		Header="Groups">		<DataGrid Name="dgvGroups" Height="310" VerticalAlignment="Bottom"/> 	</TabItem>
+			<TabItem Name="tabDirections"	Header="Directions">	<DataGrid Name="dgvDirections" Height="310" VerticalAlignment="Bottom"/>	</TabItem>
+			<TabItem Name="tabDisciplines"	Header="Disciplines">	<DataGrid Name="dgvDisciplines" Height="310" VerticalAlignment="Bottom"/>	</TabItem>
+			<TabItem Name="tabTeachers"		Header="Teachers">		<DataGrid Name="dgvTeachers" Height="310" VerticalAlignment="Bottom"/>		</TabItem>
 		</TabControl>
 		<ComboBox Grid.Row="0" Name="cb_StudentsGroups" Height="26" Width="200"  Margin="10,38,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"></ComboBox>
-		<ComboBox Grid.Row="0" Name="cb_StudentsDirections" Height="26" Width="200"  Margin="250,38,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"></ComboBox>
+		<ComboBox Grid.Row="0" Name="cb_StudentsDirections" SelectionChanged="cb_StudentsDirections_SelectionChanged" Height="26" Width="200"  Margin="250,38,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"></ComboBox>
 		<StatusBar Grid.Row="1" Name="StatusBar">
 			<StatusBarItem>
 				<TextBlock Name="StatusBarCount"/>
