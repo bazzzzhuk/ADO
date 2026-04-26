@@ -18,7 +18,8 @@
 			<TabItem Name="tabDisciplines"	Header="Disciplines">	<DataGrid Name="dgvDisciplines" />	</TabItem>
 			<TabItem Name="tabTeachers"		Header="Teachers">		<DataGrid Name="dgvTeachers" />		</TabItem>
 		</TabControl>
-		<ComboBox Grid.Row="0" Name="cb_StudentsGroups" SelectedIndex="" Height="26" Width="200"  Margin="10,38,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="cb_StudentsGroups_SelectionChanged"></ComboBox>
+		<ComboBox Grid.Row="0" Name="cb_StudentsGroups" Height="26" Width="200"  Margin="10,38,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"></ComboBox>
+		<ComboBox Grid.Row="0" Name="cb_StudentsDirections" Height="26" Width="200"  Margin="250,38,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"></ComboBox>
 		<StatusBar Grid.Row="1" Name="StatusBar">
 			<StatusBarItem>
 				<TextBlock Name="StatusBarCount"/>

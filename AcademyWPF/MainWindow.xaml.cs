@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 
 using System.Configuration;
 using DBtools;
+using System.Collections.ObjectModel;
 
 namespace AcademyWPF
 {
@@ -25,13 +26,23 @@ namespace AcademyWPF
 	{
 		Connector connector;
 		DataGrid[] tables;
+		Dictionary<string, int> d_directions;
+		Dictionary<string, int> d_groups;
+
 		public MainWindow()
 		{
 			InitializeComponent();
 			connector = new Connector(ConfigurationManager.ConnectionStrings["PV_521_Import"].ConnectionString);
 			tables = new DataGrid[] {dgvStudents, dgvGroups, dgvDirections, dgvDisciplines, dgvTeachers};
 			tabControl.SelectedIndex = 0;
-		}
+			d_directions = connector.GetDictionary("Directions");
+			d_groups = connector.GetDictionary("Groups");
+  
+			foreach(var dict  in d_groups)
+				cb_StudentsGroups.Items.Add(dict.Key);
+			foreach(var dict  in d_directions)
+				cb_StudentsDirections.Items.Add(dict.Key);
+			}
 
 		private void tabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
@@ -40,5 +51,5 @@ namespace AcademyWPF
 				Select($"SELECT * FROM {((sender as TabControl).Items[i] as TabItem).Header.ToString()}").DefaultView;
 			StatusBarCount.Text = $"Количество записей: {tables[i].Items.Count - 1}";
 		}
-	}
+    }
 }
