@@ -12,12 +12,13 @@
 			<RowDefinition Height="25"/>
 		</Grid.RowDefinitions>
 		<TabControl Name="tabControl" Grid.Row="0" SelectionChanged="tabControl_SelectionChanged">
-			<TabItem Name="tabStudents"		Header="Students">		<DataGrid Name="dgvStudents" />		</TabItem>
+			<TabItem Name="tabStudents"		Header="Students">		<DataGrid Name="dgvStudents" Height="310" VerticalAlignment="Bottom" />		</TabItem>
 			<TabItem Name="tabGroups"		Header="Groups">		<DataGrid Name="dgvGroups" />		</TabItem>
-			<TabItem Name="tabDirections"	Header="Directions">		<DataGrid Name="dgvDirections" />	</TabItem>
+			<TabItem Name="tabDirections"	Header="Directions">	<DataGrid Name="dgvDirections" />	</TabItem>
 			<TabItem Name="tabDisciplines"	Header="Disciplines">	<DataGrid Name="dgvDisciplines" />	</TabItem>
 			<TabItem Name="tabTeachers"		Header="Teachers">		<DataGrid Name="dgvTeachers" />		</TabItem>
 		</TabControl>
+		<ComboBox Grid.Row="0" Name="cb_StudentsGroups" SelectedIndex="" Height="26" Width="200"  Margin="10,38,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="cb_StudentsGroups_SelectionChanged"></ComboBox>
 		<StatusBar Grid.Row="1" Name="StatusBar">
 			<StatusBarItem>
 				<TextBlock Name="StatusBarCount"/>
